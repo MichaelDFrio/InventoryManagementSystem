@@ -39,11 +39,11 @@ return [
     'dimensions'           => 'The :attribute has invalid image dimensions.',
     'distinct'             => 'The :attribute field has a duplicate value.',
     'email'                => 'The :attribute must be a valid email address.',
-    'exists'               => 'The selected :attribute is invalid.',
+    'exists'               => 'The email address/password is invalid or your information is still being validated',
     'file'                 => 'The :attribute must be a file.',
     'filled'               => 'The :attribute field must have a value.',
     'image'                => 'The :attribute must be an image.',
-    'in'                   => 'The selected :attribute is invalid.',
+    'in'                   => 'The selected :attribute is invalid. ccccccc',
     'in_array'             => 'The :attribute field does not exist in :other.',
     'integer'              => 'The :attribute must be an integer.',
     'ip'                   => 'The :attribute must be a valid IP address.',
@@ -62,8 +62,9 @@ return [
         'string'  => 'The :attribute must be at least :min characters.',
         'array'   => 'The :attribute must have at least :min items.',
     ],
-    'not_in'               => 'The selected :attribute is invalid.',
+    'not_in'               => 'The selected :attribute is invalid. aaaa',
     'numeric'              => 'The :attribute must be a number.',
+    'pending'              => 'Your pending request is still being considered',
     'present'              => 'The :attribute field must be present.',
     'regex'                => 'The :attribute format is invalid.',
     'required'             => 'The :attribute field is required.',
@@ -98,8 +99,8 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'pending' => [
+            'pending' => 'Your pending request is still being considered',
         ],
     ],
 
@@ -114,6 +115,6 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => ['pending' => 'Your pending request is still being considered'],
 
 ];
