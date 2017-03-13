@@ -38,3 +38,11 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+
+##Known Errors and Fixes with Getting Started
+
+<b>ERROR:</b><br>
+Running php artisan serve gives you this: (../vendor/autoload.php): failed to open stream: No such file or directory in Your\File\Directory\bootstrap\autoload.php on line 17.
+<br>
+<b>Fix:</b><br>
+composer update --no-scripts
