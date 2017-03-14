@@ -23,3 +23,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Route::get('/admin-homepage', 'PageController@getAdminHomepage');
+Route::get('/pending', 'PageController@getPendingMessage');

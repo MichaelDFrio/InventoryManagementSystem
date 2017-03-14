@@ -6,6 +6,8 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Database\QueryException;
+use Request;
 
 class RegisterController extends Controller
 {
@@ -27,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/pending';
 
     /**
      * Create a new controller instance.
@@ -45,14 +47,19 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+
     protected function validator(array $data)
     {
+
         return Validator::make($data, [
             'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:1|confirmed',
-            
+            'email' => 'required|email|max:255|unique:users,email',
+            'faculty_id' => 'required|unique:users,faculty_id',
+            'password' => 'required|min:4|confirmed',
+
+
         ]);
+
     }
 
     /**
@@ -63,11 +70,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'faculty_id' => $data['faculty_id'],
             'password' => bcrypt($data['password']),
-            'admin' => '0',
+            'pending' => '0',
+            'admin' => '0'
         ]);
+
     }
 }
