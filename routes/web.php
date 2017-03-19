@@ -21,6 +21,7 @@ Route::get('/index', function(){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-
+//Only Appear if User is an admin
 Route::get('/admin-homepage', 'PageController@getAdminHomepage');
+//Only if the user is pending
 Route::get('/pending', 'PageController@getPendingMessage');

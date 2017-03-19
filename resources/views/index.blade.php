@@ -1,3 +1,7 @@
+<?php
+$connection = mysqli_connect('localhost', 'root', '', 'inventorymanagementsystem'); // Selecting Database
+date_default_timezone_set('America/New_York');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,6 +29,16 @@
     <link href="{{ asset('css/plugins/morris.css') }}" rel="stylesheet" type="text/css" >
     <link href="{{ asset('font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" >
 
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="js/plugins/morris/raphael.min.js"></script>
+    <script src="js/plugins/morris/morris.min.js"></script>
+    <script src="js/plugins/morris/morris-data.js"></script>
 </head>
 
 <body>
@@ -152,7 +166,7 @@
                     </div>
                 </div>
                 <!-- /.row -->
-                
+
 
                 <div class="row">
                     <div class="col-lg-3 col-md-6">
@@ -256,7 +270,32 @@
                                 <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Area Chart</h3>
                             </div>
                             <div class="panel-body">
-                                <div id="morris-area-chart"></div>
+                                <div id="New Users"></div>
+                                <?php
+                                $getLastThirtyDays = mysqli_query($connection, "SELECT * FROM users WHERE DATE(created_at) > (NOW() - INTERVAL 7 DAY)");
+                                $thirtyDayCount = $getLastThirtyDays->num_rows;
+                                $dateThirtyDaysAgo = date("Y-m-d", strtotime("-1 month"));
+                                ?>
+                                <script>
+                                new Morris.Line({
+                                  // ID of the element in which to draw the chart.
+                                  element: 'New Users',
+                                  // Chart data records -- each entry in this array corresponds to a point on
+                                  // the chart.
+                                  data: [
+                                    { Date: "<?php echo date('m-d-Y');?>", value: <?php echo $thirtyDayCount;?>},
+
+                                  ],
+                                  // The name of the data record attribute that contains x-values.
+                                  xkey: 'Date',
+                                  // A list of names of data record attributes that contain y-values.
+                                  ykeys: ['value'],
+                                  // Labels for the ykeys -- will be displayed when you hover over the
+                                  // chart.
+                                  labels: ['Value']
+                                });
+                                </script>
+
                             </div>
                         </div>
                     </div>
@@ -409,16 +448,7 @@
     </div>
     <!-- /#wrapper -->
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
-    <!-- Morris Charts JavaScript -->
-    <script src="js/plugins/morris/raphael.min.js"></script>
-    <script src="js/plugins/morris/morris.min.js"></script>
-    <script src="js/plugins/morris/morris-data.js"></script>
 
 </body>
 
