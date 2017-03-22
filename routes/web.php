@@ -25,7 +25,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/admin-homepage', 'PageController@getAdminHomepage')->middleware('admin');
+//Route::get('/admin-homepage', 'PageController@getAdminHomepage');//->middleware('admin');
+Route::group(/*['middleware' => 'admin'],*/['prefix' => 'admin'], function () {
+    Route::get('/', 'PageController@getAdminHomepage');
+    Route::get('/pending-checkout', 'PageController@getCheckoutPending');
+});
 Route::get('/pending', 'PageController@getPendingMessage');
 
 Route::get('/user-homepage', 'PageController@getUserHomepage');
