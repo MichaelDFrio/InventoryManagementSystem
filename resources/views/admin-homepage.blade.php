@@ -132,19 +132,28 @@
                                 //Line Graph to show the increase of users over time
                                 $connection = mysqli_connect('localhost', 'root', '', 'inventorymanagementsystem'); // Selecting Database
                                 date_default_timezone_set('America/New_York');
-                                $thirtyDayAgoSQL = mysqli_query($connection, "SELECT * FROM users WHERE created_at BETWEEN NOW() - INTERVAL 30 DAY AND NOW()");
+
+                                $thirtyDayAgoSQL = mysqli_query($connection, "SELECT * from `users` where `created_at` >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH)");
                                 $thirtyDayAgoCount = mysqli_num_rows($thirtyDayAgoSQL);
                                 $thirtyDayAgoDate = date('Y-m-d', strtotime('-30 days'));
-                                ?>
+                                $sixtyDayAgoSQL = mysqli_query($connection, "SELECT * from `users`");
+                                $sixtyDayAgoCount = mysqli_num_rows($sixtyDayAgoSQL);
+                                $sixtyDayAgoDate = date('Y-m-d', strtotime('-60 days'));
 
+                                
+                                ?>
+                                
                                 </div>
                                 <script>
                                     Morris.Line({
                                       element: 'morris-line-example',
                                       data: [{
-                                          d: '<?php echo $thirtyDayAgoDate?>',
+                                          d: "'<?php echo $thirtyDayAgoDate?>'",
                                           new_users: <?php echo $thirtyDayAgoCount?>
-                                      },],
+                                      },/*{
+                                          d: '<?//php echo $sixtyDayAgoDate?>',
+                                          new_users: <?//php echo $sixtyDayAgoCount?>
+                                      }*/],
                                       // The name of the data record attribute that contains x-visitss.
                                       xkey: 'd',
                                       // A list of names of data record attributes that contain y-visitss.
