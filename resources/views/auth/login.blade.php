@@ -29,7 +29,7 @@
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
 
-          <a class="navbar-brand" href="index.html">SB Admin</a>
+          <a class="navbar-brand" href="{{ url('/home') }}">Center for Excellence in Teaching and Learning</a>
       </div>
       <!-- Top Menu Items -->
       <ul class="nav navbar-right top-nav">
