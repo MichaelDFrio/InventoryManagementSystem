@@ -18,9 +18,18 @@ Route::get('/index', function(){
 	return view('index');
 });
 
+//Logout on Routes would break so I hardcoded it
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/admin-homepage', 'PageController@getAdminHomepage');
+//Route::get('/admin-homepage', 'PageController@getAdminHomepage');//->middleware('admin');
+Route::group(/*['middleware' => 'admin'],*/['prefix' => 'admin'], function () {
+    Route::get('/', 'PageController@getAdminHomepage');
+    Route::get('/pending-checkout', 'PageController@getCheckoutPending');
+});
 Route::get('/pending', 'PageController@getPendingMessage');
+
+Route::get('/user-homepage', 'PageController@getUserHomepage');
