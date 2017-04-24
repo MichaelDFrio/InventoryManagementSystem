@@ -158,6 +158,13 @@ body:before {
     top: 18px;
 }
 
+.top-left {
+    position: absolute;
+    left: 10px;
+    top: 18px;
+    float:left;
+}
+
 .content {
     text-align: center;
 }

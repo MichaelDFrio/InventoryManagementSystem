@@ -40,7 +40,7 @@
                                 </div>
                             </div>
                             <!-- NAME OF ROUTE -->
-                            <a href="/checkout-pending">
+                            <a href>
                                 <div class="panel-footer">
                                     <span class="pull-left">View Details</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -140,9 +140,9 @@
                                 $sixtyDayAgoCount = mysqli_num_rows($sixtyDayAgoSQL);
                                 $sixtyDayAgoDate = date('Y-m-d', strtotime('-60 days'));
 
-                                
+
                                 ?>
-                                
+
                                 </div>
                                 <script>
                                     Morris.Line({
