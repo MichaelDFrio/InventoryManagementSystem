@@ -54,45 +54,48 @@
         @endif
       </ul>
     </nav>
-<div class="container">
-  <div class="info">
-    <h1>Checkout An Item</h1><span>
+  <div class="container">
+    <div class="info">
+      <h1>Checkout an Item</h1><span>
+    </div>
   </div>
-</div>
-<div class="form-login">
-  <div class="thumbnail"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/hat.svg"/></div>
-  <form class="login-form" role="form" method="POST">
-        {{ csrf_field() }}
+  <div class="form-login">
+    <div class="thumbnail"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/hat.svg"/></div>
+    <form class="login-form" role="form" method="POST" action="{{ route('login') }}">
+          {{ csrf_field() }}
 
 
-
-        <div class="col-md-12" style="padding-bottom: 5px">
-            <select name="checkoutItem" required="true">
-              <option value="Laptop">Laptop</option>
-              <option value="iPad">iPad</option>
-              <option value="PRS">PRS</option>
-              <option value="Web Cam">Web Cam</option>
-            </select>
-        </div>
-
-        <div class="col-md-12">
-            Checkout Date:
-            <input type="date" name="checkoutDate" placeholder="Choose Checkout Date" required="true">
-        </div>
-        <div class="col-md-12">
-            Return Date:
-            <input type="date" name="returnDate" placeholder="Choose Return Date" required="true">
-        </div>
-
-
-        <div class="form-group">
-            <div class="col-md-12">
-                <button type="submit" class="btn btn-primary">
-                    Request Checkout
-                </button>
+          <div class="form-group">
+            <div class="col-md-12" style="padding-bottom: 5px">
+                <select name="checkoutItem" required="true">
+                  <option value="Laptop">Laptop</option>
+                  <option value="iPad">iPad</option>
+                  <option value="PRS">PRS</option>
+                  <option value="Web Cam">Web Cam</option>
+                </select>
             </div>
-        </div>
-    </form>
-</div>
-</body>
-</html>
+          </div>
+
+          <div class="form-group">
+
+
+            <div class="col-md-12">
+                Checkout Date:
+                <input type="date" name="checkoutDate" placeholder="Choose Checkout Date" required="true">
+            </div>
+          </div>
+          <div class="col-md-12">
+              Return Date:
+              <input type="date" name="returnDate" placeholder="Choose Return Date" required="true">
+          </div>
+              <div class="col-md-12">
+                  <button type="submit" class="btn btn-primary">
+                      Request Checkout of Item
+                  </button>
+              </div>
+
+          <p class="message" style="padding-top: 5px;">Already have an item checked out? <a href="/checkout-form">Status of Items</a></p>
+      </form>
+  </div>
+  </body>
+  </html>

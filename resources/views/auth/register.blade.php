@@ -83,7 +83,7 @@
 
 
                 <div class="col-md-12">
-                    <input id="faculty_id" type="faculty_id" class="form-control" name="faculty_id" placeholder="ID Number" required>
+                    <input id="faculty_id" type="number" class="form-control" name="faculty_id" placeholder="ID Number" required>
 
                     @if ($errors->has('faculty_id'))
                         <span class="help-block">
